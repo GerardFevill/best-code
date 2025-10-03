@@ -1,0 +1,40 @@
+{
+  "name": "@relia-scope/hello-utils",
+  "version": "1.0.0",
+  "description": "Petite librairie utilitaire pour les salutations et fonctions d'aide",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"No build step required for vanilla JS\"",
+    "prepublishOnly": "npm run test",
+    "start": "node index.js"
+  },
+  "keywords": [
+    "utils",
+    "utilities",
+    "hello",
+    "greetings",
+    "helper"
+  ],
+  "author": "Relia <relia@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/relia/hello-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/relia/hello-utils/issues"
+  },
+  "homepage": "https://github.com/relia/hello-utils#readme",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
