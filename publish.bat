@@ -1,6 +1,6 @@
 @echo off
 echo ========================================
-echo   Publication de @relia-scope/hello-utils
+echo   Publication de @cosmospark/best-code
 echo ========================================
 echo.
 
@@ -61,9 +61,9 @@ echo   Publication reussie !
 echo ========================================
 echo.
 echo Votre package est maintenant disponible sur:
-echo https://www.npmjs.com/package/@relia-scope/hello-utils
+echo https://www.npmjs.com/package/@cosmospark/best-code
 echo.
 echo Installation:
-echo npm install @relia-scope/hello-utils
+echo npm install @cosmospark/best-code
 echo.
 pause

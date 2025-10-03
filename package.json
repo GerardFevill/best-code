@@ -1,5 +1,5 @@
 {
-  "name": "@relia-scope/hello-utils",
+  "name": "@cosmospark/best-code",
   "version": "1.0.0",
   "description": "Petite librairie utilitaire pour les salutations et fonctions d'aide",
   "main": "index.js",
@@ -10,22 +10,22 @@
     "start": "node index.js"
   },
   "keywords": [
+    "cosmospark",
+    "best-code",
     "utils",
     "utilities",
-    "hello",
-    "greetings",
     "helper"
   ],
   "author": "Relia <relia@example.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/relia/hello-utils.git"
+    "url": "git+https://github.com/cosmospark/best-code.git"
   },
   "bugs": {
-    "url": "https://github.com/relia/hello-utils/issues"
+    "url": "https://github.com/cosmospark/best-code/issues"
   },
-  "homepage": "https://github.com/relia/hello-utils#readme",
+  "homepage": "https://github.com/cosmospark/best-code#readme",
   "files": [
     "index.js",
     "README.md",

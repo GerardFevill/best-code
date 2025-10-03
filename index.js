@@ -1,5 +1,5 @@
 /**
- * @relia-scope/hello-utils
+ * @cosmospark/best-code
  * Petite librairie utilitaire pour les salutations et fonctions d'aide
  */
 
@@ -76,7 +76,7 @@ module.exports.default = {
 
 // Exemple d'utilisation si le fichier est exécuté directement
 if (require.main === module) {
-  console.log('🚀 Test de @relia-scope/hello-utils');
+  console.log('🚀 Test de @cosmospark/best-code');
   console.log('');
   console.log(hello('Relia'));
   console.log(hello('Monde', 'Bonjour'));

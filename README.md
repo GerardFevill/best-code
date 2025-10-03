@@ -1,6 +1,6 @@
-# @relia-scope/hello-utils
+# @cosmospark/best-code
 
-[![npm version](https://badge.fury.io/js/%40relia-scope%2Fhello-utils.svg)](https://badge.fury.io/js/%40relia-scope%2Fhello-utils)
+[![npm version](https://badge.fury.io/js/%40cosmospark%2Fbest-code.svg)](https://badge.fury.io/js/%40cosmospark%2Fbest-code)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen)](https://nodejs.org/)
 
@@ -11,7 +11,7 @@ Une collection de fonctions utilitaires simples et efficaces pour gérer les sal
 ## 🚀 Installation
 
 ```bash
-npm install @relia-scope/hello-utils
+npm install @cosmospark/best-code
 ```
 
 ## 📖 Utilisation
@@ -20,10 +20,10 @@ npm install @relia-scope/hello-utils
 
 ```javascript
 // ES6 Modules
-import { hello, welcome, capitalize, slugify } from '@relia-scope/hello-utils';
+import { hello, welcome, capitalize, slugify } from '@cosmospark/best-code';
 
 // CommonJS
-const { hello, welcome, capitalize, slugify } = require('@relia-scope/hello-utils');
+const { hello, welcome, capitalize, slugify } = require('@cosmospark/best-code');
 ```
 
 ### Exemples d'utilisation
@@ -33,7 +33,7 @@ const { hello, welcome, capitalize, slugify } = require('@relia-scope/hello-util
 Génère un message de salutation personnalisé.
 
 ```javascript
-const { hello } = require('@relia-scope/hello-utils');
+const { hello } = require('@cosmospark/best-code');
 
 console.log(hello('Relia'));
 // Output: "Hello, Relia!"
@@ -47,7 +47,7 @@ console.log(hello('Monde', 'Bonjour'));
 Génère un message de bienvenue avec l'heure actuelle.
 
 ```javascript
-const { welcome } = require('@relia-scope/hello-utils');
+const { welcome } = require('@cosmospark/best-code');
 
 console.log(welcome('Développeur'));
 // Output: "Bienvenue Développeur! Il est actuellement 04/10/2025 à 00:37:59"
@@ -58,7 +58,7 @@ console.log(welcome('Développeur'));
 Capitalise la première lettre d'une chaîne.
 
 ```javascript
-const { capitalize } = require('@relia-scope/hello-utils');
+const { capitalize } = require('@cosmospark/best-code');
 
 console.log(capitalize('hello world'));
 // Output: "Hello world"
@@ -72,7 +72,7 @@ console.log(capitalize('JAVASCRIPT'));
 Génère un slug URL-friendly à partir d'une chaîne.
 
 ```javascript
-const { slugify } = require('@relia-scope/hello-utils');
+const { slugify } = require('@cosmospark/best-code');
 
 console.log(slugify('Hello World! Comment ça va?'));
 // Output: "hello-world-comment-ca-va"
@@ -150,8 +150,8 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 
 Si vous avez des questions ou des problèmes :
 
-- 🐛 [Signaler un bug](https://github.com/relia/hello-utils/issues)
-- 💡 [Demander une feature](https://github.com/relia/hello-utils/issues)
+- 🐛 [Signaler un bug](https://github.com/cosmospark/best-code/issues)
+- 💡 [Demander une feature](https://github.com/cosmospark/best-code/issues)
 - 📧 Contact: relia@example.com
 
 ## 📈 Changelog
@@ -164,4 +164,4 @@ Si vous avez des questions ou des problèmes :
 
 ---
 
-Made with ❤️ by [Relia](https://github.com/relia)
+Made with ❤️ by [Cosmospark](https://github.com/cosmospark)
