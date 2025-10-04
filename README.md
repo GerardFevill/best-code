@@ -8,6 +8,16 @@
 
 Une collection de fonctions utilitaires simples et efficaces pour gérer les salutations, la capitalisation et la génération de slugs.
 
+## 📁 Structure simple
+
+```
+├── index-simple.js      # Code principal
+├── example-simple.js    # Exemple d'utilisation
+├── package-simple.json  # Configuration
+├── README.md           # Documentation
+└── LICENSE             # Licence MIT
+```
+
 ## 🚀 Installation
 
 ```bash
@@ -150,9 +160,9 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 
 Si vous avez des questions ou des problèmes :
 
-- 🐛 [Signaler un bug](https://github.com/cosmospark/best-code/issues)
-- 💡 [Demander une feature](https://github.com/cosmospark/best-code/issues)
-- 📧 Contact: relia@example.com
+- 🐛 [Signaler un bug](https://github.com/GerardFevill/best-code/issues)
+- 💡 [Demander une feature](https://github.com/GerardFevill/best-code/issues)
+- 📧 Contact: gerard.nouglozeh@protonmail.com
 
 ## 📈 Changelog
 
@@ -164,4 +174,4 @@ Si vous avez des questions ou des problèmes :
 
 ---
 
-Made with ❤️ by [Cosmospark](https://github.com/cosmospark)
+Made with ❤️ by [GerardFevill](https://github.com/GerardFevill)
