@@ -8,7 +8,8 @@
     "start": "node index.js",
     "setup": "tools\\setup-git.bat",
     "commit": "tools\\commit-push.bat",
-    "push": "tools\\quick-commit.bat"
+    "push": "tools\\quick-commit.bat",
+    "deploy": "echo 'Déploiement automatique via GitHub Actions'"
   },
   "keywords": [
     "cosmospark",
