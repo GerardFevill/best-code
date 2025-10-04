@@ -1,0 +1,40 @@
+{
+  "name": "@cosmospark/best-code",
+  "version": "1.0.0",
+  "description": "Petite librairie utilitaire pour les salutations et fonctions d'aide",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "node index.js",
+    "setup": "tools\\setup-git.bat",
+    "commit": "tools\\commit-push.bat",
+    "push": "tools\\quick-commit.bat"
+  },
+  "keywords": [
+    "cosmospark",
+    "utilities",
+    "javascript",
+    "helper-functions"
+  ],
+  "author": "fevill <gerard.nouglozeh@protonmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GerardFevill/best-code.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GerardFevill/best-code/issues"
+  },
+  "homepage": "https://github.com/GerardFevill/best-code#readme",
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
