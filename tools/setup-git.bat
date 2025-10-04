@@ -1,28 +1,28 @@
 @echo off
-echo 🔧 Configuration Git...
+echo 🔧 Git Configuration...
 
-:: Initialiser le repo si nécessaire
+:: Initialize repo if necessary
 if not exist ".git" (
-    echo 📁 Initialisation du repository...
+    echo 📁 Initializing repository...
     git init
 )
 
-:: Ajouter le remote origin si pas déjà fait
+:: Add remote origin if not already done
 git remote get-url origin >nul 2>&1
 if %errorlevel% neq 0 (
-    echo 🌐 Ajout du remote origin...
+    echo 🌐 Adding remote origin...
     git remote add origin https://github.com/GerardFevill/best-code.git
 ) else (
-    echo ✅ Remote origin déjà configuré
+    echo ✅ Remote origin already configured
 )
 
-:: Créer la branche main si nécessaire
+:: Create main branch if necessary
 git branch -M main
 
-echo ✅ Configuration Git terminée !
+echo ✅ Git configuration completed!
 echo.
-echo 📋 Prochaines étapes :
-echo 1. Utilisez tools\commit-push.bat pour commit et push
-echo 2. Ou tools\quick-commit.bat pour un commit rapide
+echo 📋 Next steps:
+echo 1. Use tools\commit-push.bat to commit and push
+echo 2. Or tools\quick-commit.bat for quick commit
 echo.
 pause
