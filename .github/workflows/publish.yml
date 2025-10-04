@@ -1,22 +1,17 @@
-name: 🚀 Deploy to NPM
+name: 🚀 Publish @cosmospark/best-code
 
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
-    inputs:
-      force_publish:
-        description: 'Force publication (ignore version check)'
-        required: false
-        default: false
-        type: boolean
 
 jobs:
-  deploy:
+  publish:
+    name: 📦 Deploy to NPM
     runs-on: ubuntu-latest
     
     steps:
-    - name: 📥 Checkout code
+    - name: 📥 Checkout repository
       uses: actions/checkout@v4
       
     - name: 🔧 Setup Node.js
@@ -25,28 +20,27 @@ jobs:
         node-version: '20'
         registry-url: 'https://registry.npmjs.org'
         
-    - name: 📦 Install dependencies
-      run: npm install
-      
-    - name: 🧪 Run tests
+    - name: 🧪 Test package
       run: npm test
         
-    - name: ✅ Validate package
+    - name: ✅ Validate package structure
       run: npm pack --dry-run
       
-    - name: 🔍 Check NPM login
+    - name: 🔍 Verify NPM authentication
       run: npm whoami
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
-    - name: 📤 Publish to NPM
+    - name: 📤 Publish to NPM Registry
       run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
-    - name: 🎉 Success notification
+    - name: 🎉 Deployment Success
       run: |
-        echo "✅ Package @cosmospark/best-code publié avec succès sur NPM !"
-        echo "📦 Disponible sur: https://www.npmjs.com/package/@cosmospark/best-code"
-        echo "📥 Installation: npm install @cosmospark/best-code"
-        echo "🔗 GitHub: https://github.com/GerardFevill/best-code"
+        echo "🎯 @cosmospark/best-code successfully published!"
+        echo ""
+        echo "📦 NPM Package: https://www.npmjs.com/package/@cosmospark/best-code"
+        echo "📥 Install: npm install @cosmospark/best-code"
+        echo "🔗 Repository: https://github.com/GerardFevill/best-code"
+        echo "📚 Functions: hello, welcome, capitalize, slugify"
