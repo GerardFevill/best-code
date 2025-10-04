@@ -19,12 +19,16 @@ jobs:
   publish:
     name: 📦 Deploy to NPM
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
     
     steps:
     - name: 📥 Checkout repository
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
+        fetch-depth: 0
       
     - name: 🔧 Setup Node.js
       uses: actions/setup-node@v4
@@ -123,7 +127,7 @@ jobs:
           # Commit version change
           git add package.json
           git commit -m "chore: bump version from $OLD_VERSION to $NEW_VERSION"
-          git push
+          git push origin HEAD:main
         fi
         
     - name: 📋 Verify package.json version
