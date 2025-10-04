@@ -4,6 +4,16 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
+    inputs:
+      version_type:
+        description: 'Version increment type'
+        required: false
+        default: 'patch'
+        type: choice
+        options:
+        - patch
+        - minor
+        - major
 
 jobs:
   publish:
@@ -13,12 +23,114 @@ jobs:
     steps:
     - name: 📥 Checkout repository
       uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: 🔧 Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20'
         registry-url: 'https://registry.npmjs.org'
+        
+    - name: 🔍 Configure Git
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+    - name: 📈 Smart version increment (aligned with commit-push.bat)
+      run: |
+        # Analyze changes like commit-push.bat does
+        echo "🔍 Analyzing changes with git status..."
+        git status --porcelain > temp_status.txt
+        
+        echo "📋 Changes detected:"
+        cat temp_status.txt
+        
+        # Check for different types of changes (same logic as commit-push.bat)
+        pkg_changed=""
+        docs_changed=""
+        code_changed=""
+        workflow_changed=""
+        tools_changed=""
+        version_changed=""
+        
+        if grep -q "package.json" temp_status.txt; then
+          pkg_changed="1"
+          echo "  - Package configuration modified"
+        fi
+        if grep -q "\.md" temp_status.txt; then
+          docs_changed="1"
+          echo "  - Documentation files modified"
+        fi
+        if grep -q "\.js" temp_status.txt; then
+          code_changed="1"
+          echo "  - JavaScript code modified"
+        fi
+        if grep -q "\.yml" temp_status.txt; then
+          workflow_changed="1"
+          echo "  - Workflow files modified"
+        fi
+        if grep -q "tools/" temp_status.txt; then
+          tools_changed="1"
+          echo "  - Development tools modified"
+        fi
+        
+        # Check for version changes in package.json
+        if [ "$pkg_changed" = "1" ]; then
+          if git diff HEAD~1 HEAD package.json | grep -q '"version"'; then
+            version_changed="1"
+            echo "  - Version bump detected"
+            echo "Manual version bump detected, skipping auto-increment"
+            echo "SKIP_VERSION=true" >> $GITHUB_ENV
+          fi
+        fi
+        
+        # Clean up temp file
+        rm -f temp_status.txt
+        
+        if [ "$SKIP_VERSION" != "true" ]; then
+          # Determine version type based on changes (aligned with commit-push.bat logic)
+          VERSION_TYPE="patch"  # default
+          
+          if [ "$version_changed" = "1" ]; then
+            VERSION_TYPE="patch"  # already handled above
+          elif [ "$code_changed" = "1" ]; then
+            VERSION_TYPE="minor"  # core functionality = minor
+          elif [ "$pkg_changed" = "1" ]; then
+            VERSION_TYPE="patch"  # package config = patch
+          elif [ "$docs_changed" = "1" ]; then
+            VERSION_TYPE="patch"  # docs = patch
+          elif [ "$workflow_changed" = "1" ]; then
+            VERSION_TYPE="patch"  # ci = patch
+          elif [ "$tools_changed" = "1" ]; then
+            VERSION_TYPE="patch"  # chore = patch
+          fi
+          
+          # Override with manual input if provided
+          if [ "${{ github.event.inputs.version_type }}" != "" ]; then
+            VERSION_TYPE="${{ github.event.inputs.version_type }}"
+          fi
+          
+          echo "🎯 Determined version type: $VERSION_TYPE"
+          echo "Incrementing $VERSION_TYPE version"
+          OLD_VERSION=$(npm pkg get version | tr -d '"')
+          npm version $VERSION_TYPE --no-git-tag-version
+          NEW_VERSION=$(npm pkg get version | tr -d '"')
+          
+          echo "Version updated: $OLD_VERSION → $NEW_VERSION"
+          echo "Updated package.json with new version"
+          
+          # Commit version change
+          git add package.json
+          git commit -m "chore: bump version from $OLD_VERSION to $NEW_VERSION"
+          git push
+        fi
+        
+    - name: 📋 Verify package.json version
+      run: |
+        CURRENT_VERSION=$(npm pkg get version | tr -d '"')
+        echo "Current version in package.json: $CURRENT_VERSION"
+        echo "This version will be published to NPM"
         
     - name: 🧪 Test package
       run: npm test
@@ -36,11 +148,19 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         
+    - name: 🏷️ Create Git Tag
+      run: |
+        VERSION=$(npm pkg get version | tr -d '"')
+        git tag "v$VERSION"
+        git push origin "v$VERSION"
+        
     - name: 🎉 Deployment Success
       run: |
-        echo "🎯 @cosmospark/best-code successfully published!"
+        VERSION=$(npm pkg get version | tr -d '"')
+        echo "🎯 @cosmospark/best-code v$VERSION successfully published!"
         echo ""
         echo "📦 NPM Package: https://www.npmjs.com/package/@cosmospark/best-code"
-        echo "📥 Install: npm install @cosmospark/best-code"
+        echo "📥 Install: npm install @cosmospark/best-code@$VERSION"
         echo "🔗 Repository: https://github.com/GerardFevill/best-code"
         echo "📚 Functions: hello, welcome, capitalize, slugify"
+        echo "🏷️ Git Tag: v$VERSION created"
