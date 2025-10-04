@@ -9,7 +9,8 @@
     "setup": "tools\\setup-git.bat",
     "commit": "tools\\commit-push.bat",
     "push": "tools\\quick-commit.bat",
-    "deploy": "echo 'Déploiement automatique via GitHub Actions'"
+    "deploy": "echo 'Déploiement automatique via GitHub Actions'",
+    "clean-workflows": "tools\\clean-workflows.bat"
   },
   "keywords": [
     "cosmospark",
