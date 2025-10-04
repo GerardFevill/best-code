@@ -10,7 +10,8 @@
     "commit": "tools\\commit-push.bat",
     "push": "tools\\quick-commit.bat",
     "deploy": "echo 'Déploiement automatique via GitHub Actions'",
-    "clean-workflows": "tools\\clean-workflows.bat"
+    "clean-workflows": "tools\\clean-workflows.bat",
+    "install": "npm install && npm run commit"
   },
   "keywords": [
     "cosmospark",
