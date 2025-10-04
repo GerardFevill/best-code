@@ -83,9 +83,17 @@ if %errorlevel% neq 0 (
     echo ⚠️ No changes to commit or error occurred
 )
 
+:: Pull remote changes first to avoid conflicts
+echo 🔄 Syncing with remote...
+git pull origin main --rebase
+if %errorlevel% neq 0 (
+    echo ⚠️ Conflict during pull, trying merge strategy...
+    git pull origin main
+)
+
 :: Push to remote branch
 echo 🌐 Pushing to remote branch...
-git push
+git push origin main
 if %errorlevel% neq 0 (
     echo ❌ Error during push
     echo Check your connection and remote branch
