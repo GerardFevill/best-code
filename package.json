@@ -1,6 +1,6 @@
 {
   "name": "@cosmospark/best-code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Petite librairie utilitaire pour les salutations et fonctions d'aide",
   "main": "index.js",
   "scripts": {
