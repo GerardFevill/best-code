@@ -1,6 +1,6 @@
 {
   "name": "@cosmospark/best-code",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "BestCode gives developers and AI assistants the tools to write clean, secure, and maintainable code by default. It enforces best practices, encourages atomic and meaningful commits, and prevents chaotic or bloated pushes. With BestCode, you focus on building valuable features — while it ensures technical excellence behind the scenes.",
   "main": "index.js",
   "scripts": {
