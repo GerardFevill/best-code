@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "bestcode-config",
+  "version": "2.0.0",
+  "description": "Configuration pour les agents IA utilisant BestCode",
+  
+  "ai": {
+    "refactor": true,
+    "enforceAtomicCommits": true,
+    "securityLevel": "moderate",
+    "strictTypes": true,
+    "preferredPatterns": [
+      "Result<T, E>",
+      "Repository",
+      "DTO",
+      "Option<T>",
+      "Builder"
+    ],
+    "forbiddenPatterns": [
+      "any",
+      "eval",
+      "Function()",
+      "process.env direct access"
+    ]
+  },
+  
+  "refactoring": {
+    "maxLinesPerCommit": 50,
+    "requireTests": true,
+    "requireDocumentation": true,
+    "commentPrefix": "// @ai-refactor:",
+    "conventionalCommits": true
+  },
+  
+  "security": {
+    "validateInputs": true,
+    "sanitizeOutputs": true,
+    "requireFallbacks": true,
+    "auditLevel": "moderate",
+    "forbiddenFunctions": [
+      "eval",
+      "Function",
+      "setTimeout with string",
+      "setInterval with string"
+    ]
+  },
+  
+  "typescript": {
+    "strict": true,
+    "noImplicitAny": true,
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "preferInterfaces": true,
+    "requireReturnTypes": true
+  },
+  
+  "codeGeneration": {
+    "includeTests": true,
+    "includeDocumentation": true,
+    "useConventionalCommits": true,
+    "preferFunctionalPatterns": true,
+    "maxComplexity": 10
+  },
+  
+  "examples": {
+    "secureRoute": {
+      "description": "Génère une route Express sécurisée avec validation",
+      "template": "POST /resource with rate limiting, validation, and error handling"
+    },
+    "repositoryPattern": {
+      "description": "Implémente le pattern Repository avec Result<T, E>",
+      "template": "interface + implementation with error handling"
+    },
+    "dtoValidation": {
+      "description": "Crée un DTO avec validation Joi/Zod",
+      "template": "interface + schema + validation function"
+    }
+  },
+  
+  "hooks": {
+    "beforeRefactor": [
+      "analyze-dependencies",
+      "check-test-coverage",
+      "validate-types"
+    ],
+    "afterRefactor": [
+      "run-tests",
+      "check-security",
+      "validate-commit-message"
+    ]
+  },
+  
+  "metadata": {
+    "lastUpdated": "2024-10-04",
+    "version": "2.0.0",
+    "compatibleWith": {
+      "node": ">=18.0.0",
+      "typescript": ">=5.0.0"
+    }
+  }
+}

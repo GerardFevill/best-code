@@ -2,16 +2,32 @@
   "name": "@cosmospark/best-code",
   "version": "1.0.3",
   "description": "BestCode gives developers and AI assistants the tools to write clean, secure, and maintainable code by default. It enforces best practices, encourages atomic and meaningful commits, and prevents chaotic or bloated pushes. With BestCode, you focus on building valuable features — while it ensures technical excellence behind the scenes.",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
-    "test": "node index.js",
-    "start": "node index.js",
+    "build": "tsc -p tsconfig.build.json",
+    "build:watch": "tsc -p tsconfig.build.json --watch",
+    "start": "node lib/index.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/**/*.ts tests/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts tests/**/*.ts --fix",
+    "format": "prettier --write src/**/*.ts tests/**/*.ts",
+    "type-check": "tsc --noEmit",
+    "security:audit": "npm audit --audit-level moderate",
+    "security:check": "npx better-npm-audit audit",
+    "clean": "rimraf lib dist coverage",
+    "prebuild": "npm run clean",
+    "prestart": "npm run build",
+    "prepublishOnly": "npm run build && npm run test",
+    "migrate:check": "node scripts/migrate-to-typescript.js",
     "setup": "tools\\setup-git.bat",
     "commit": "tools\\commit-push.bat",
     "push": "tools\\quick-commit.bat",
     "deploy": "echo 'Déploiement automatique via GitHub Actions'",
-    "clean-workflows": "tools\\clean-workflows.bat",
-    "install": "npm install && npm run commit"
+    "clean-workflows": "tools\\clean-workflows.bat"
   },
   "keywords": [
     "cosmospark",
@@ -30,12 +46,29 @@
   },
   "homepage": "https://github.com/GerardFevill/best-code#readme",
   "files": [
-    "index.js",
+    "lib/**/*",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "bestcode.config.json",
+    "docs/nodejs-typescript-reference.md"
   ],
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.2",
+    "@types/node": "^20.9.0",
+    "@types/jest": "^29.5.8",
+    "ts-node-dev": "^2.0.0",
+    "ts-jest": "^29.1.1",
+    "jest": "^29.7.0",
+    "eslint": "^8.54.0",
+    "@typescript-eslint/parser": "^6.12.0",
+    "@typescript-eslint/eslint-plugin": "^6.12.0",
+    "prettier": "^3.1.0",
+    "rimraf": "^5.0.5",
+    "better-npm-audit": "^3.7.3"
   },
   "publishConfig": {
     "access": "public"
